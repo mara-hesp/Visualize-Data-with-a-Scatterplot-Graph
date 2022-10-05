@@ -1,0 +1,12 @@
+#title {
+    text-align: center;
+}
+
+.dot:hover {
+    opacity: 0.5;
+}
+
+.tooltip {
+    position: absolute;
+    visibility: none;
+}
