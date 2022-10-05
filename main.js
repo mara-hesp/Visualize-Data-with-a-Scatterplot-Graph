@@ -50,7 +50,7 @@ fetch('https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/maste
         .attr('r', 7)
         .attr('class', 'dot')
         .style('fill', d => {
-          if (d.Doping == "") {
+          if (d.Doping === "") {
             return '#ff9c00'
           } return '#1778f2'
         })
@@ -68,8 +68,12 @@ fetch('https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/maste
                   .style('left', '900px')
                   .style('list-style', 'none')
                   .style('text-align', 'rigth')
+                  .style('color', (d, i) => {
+                    if (i === 0) {
+                      return '#ff9c00'
+                    } return '#1778f2'
+                  })
                   .text(d => d)
-
 
     let minAndSec = d3.timeFormat("%M:%S")
     let year = d3.timeFormat('%Y')
@@ -84,4 +88,5 @@ fetch('https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/maste
     svg.append('g')
         .attr('transform', `translate(${padding}, 0)`)
         .call(yAxis)
+
 })
