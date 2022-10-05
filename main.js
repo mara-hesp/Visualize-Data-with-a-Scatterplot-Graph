@@ -24,8 +24,8 @@ fetch('https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/maste
     const minX = d3.min(data, d => new Date(d.Year - 1))
     const maxX = d3.max(data, d => new Date(d.Year + 1))
 
-    const minY = d3.min(data, d => toTime(d.Time))
-    const maxY = d3.max(data, d => toTime(d.Time))
+    const minY = d3.max(data, d => toTime(d.Time))
+    const maxY = d3.min(data, d => toTime(d.Time))
 
     const xScale = d3.scaleLinear()
                     .domain([minX, maxX])
@@ -54,6 +54,7 @@ fetch('https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/maste
             return '#ff9c00'
           } return '#1778f2'
         })
+        .style('opacity', 0.5)
         .append('title')
         .text(d => `${d.Name}, ${d.Nationality}\nYear: ${d.Year}, Time: ${d.Time}\n${d.Doping}`)
 
